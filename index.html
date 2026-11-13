@@ -54,7 +54,7 @@ html,body{margin:0!important;padding:0!important;background:#050505!important;ov
 
 <div id="itu-theme" data-palette="2" style="position:relative;background:linear-gradient(145deg,#281323,#55213c,#783c38);color:#fff;padding:15px;border:1px solid #d77d7d;border-radius:14px;font-family:Arial,sans-serif;box-shadow:0 0 18px #ff8a78;">
 
-<button id="preview-color-button" class="theme-button" onclick="
+<button id="preview-color-button" class="theme-button" data-hover-button onclick="
 var b=document.getElementById('itu-theme');
 var palettes=[
 {name:'MIDNIGHT',bg:'linear-gradient(145deg,#100d24,#21163d,#111b35)',panel:'linear-gradient(135deg,#21183b,#172642,#302044)',soft:'#30234b',accent:'#c8a8ff',accent2:'#9bd2ff',border:'#8065b5',glow:'#9873e8'},
@@ -125,7 +125,7 @@ box.appendChild(f);setTimeout(function(){f.remove()},7500);
 <div class="member-counter">
 <div class="member-heading">✦ MEMBERS ✦</div>
 <div class="member-number">100</div>
-<div class="member-caption">MEMBERS AND COUNTING</div>
+<div class="member-caption">COUNTING</div>
 <div class="member-status"><span class="member-dot"></span><span>Live • Club active</span></div>
 </div>
 
@@ -271,4 +271,3 @@ loadPreviewAvatar('gothamchess','preview-avatar-gothamchess','G');
 })();
 </script>
 </div>
-
