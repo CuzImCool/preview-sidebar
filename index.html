@@ -1,0 +1,411 @@
+<style>
+html,body{margin:0!important;padding:0!important;background:#050505!important;overflow-x:hidden}
+
+#itu-theme,#itu-theme *{cursor:none!important}
+#itu-cookie-cursor{position:fixed;z-index:2147483647;pointer-events:none;display:none;font-size:25px;transform:translate(3px,3px);filter:drop-shadow(0 0 5px #d7a56b)}
+
+#itu-theme{box-sizing:border-box;width:100%;min-height:100vh;line-height:1.4}
+
+.swish-trail{position:fixed;z-index:2147483647;pointer-events:none;width:24px;height:9px;border:2px solid rgba(255,255,255,.8);border-color:rgba(255,255,255,.8) transparent transparent;border-radius:50%;transform:rotate(-25deg);animation:swishFade .65s ease-out forwards}
+@keyframes swishFade{to{opacity:0;transform:translate(15px,10px) rotate(15deg) scale(.25)}}
+
+#itu-theme button,#itu-theme a[data-hover-button]{transition:all .22s ease}
+#itu-theme button[data-hover-button]:hover,#itu-theme a[data-hover-button]:hover{transform:translateY(-2px) scale(1.02);filter:brightness(1.25);box-shadow:0 0 16px var(--hover-glow,#fff),0 0 28px var(--hover-glow,#fff);border-color:var(--hover-border,#fff)!important}
+
+#itu-theme .itu-cat-rain{position:absolute;top:-40px;z-index:9999;pointer-events:none;animation:cookieFall linear forwards}
+@keyframes cookieFall{0%{transform:translateY(-30px) rotate(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(750px) rotate(360deg);opacity:0}}
+
+#itu-theme .hawk-profile{ text-align:center;padding:14px 8px;margin-bottom:12px;border:1px solid #777;border-radius:11px;background:#111;overflow:hidden;transition:all .25s}
+#itu-theme .hawk-avatar-wrap{width:78px;height:78px;margin:10px auto;border-radius:50%;padding:3px;background:#555;box-shadow:0 0 9px #fff;transition:all .25s}
+#itu-theme .hawk-avatar-wrap:hover,#itu-theme .watch-avatar-wrap:hover{transform:scale(1.08);filter:brightness(1.2);box-shadow:0 0 16px var(--avatar-glow,#fff),0 0 28px var(--avatar-glow,#fff)}
+#itu-theme .hawk-avatar-inner{width:100%;height:100%;border-radius:50%;background:#171717;display:flex;align-items:center;justify-content:center;overflow:hidden;font-size:34px;font-weight:900;color:#fff}
+#itu-theme #hawk-live-avatar{width:100%;height:100%;object-fit:cover;display:none}
+#itu-theme .hawk-name{font-size:18px;font-weight:900;letter-spacing:2px;color:#fff;overflow-wrap:anywhere}
+#itu-theme .hawk-owner-label{font-size:9px;letter-spacing:4px;color:#aaa;margin-bottom:5px}
+
+#itu-theme .watch-profile{display:flex;align-items:center;gap:13px;padding:11px;margin-bottom:10px;border:1px solid #777;border-left:4px solid #777;border-radius:9px;background:#111;min-height:82px;box-sizing:border-box;transition:all .25s}
+#itu-theme .watch-avatar-wrap{width:64px;height:64px;min-width:64px;border-radius:9px;padding:2px;background:#555;box-shadow:0 0 8px #fff;box-sizing:border-box;transition:all .25s}
+#itu-theme .watch-avatar-inner{width:100%;height:100%;border-radius:7px;background:#171717;display:flex;align-items:center;justify-content:center;overflow:hidden;font-size:30px;font-weight:900;color:#fff}
+#itu-theme .watch-avatar-inner img{display:none;width:100%;height:100%;object-fit:cover}
+#itu-theme .watch-info{min-width:0;text-align:left}
+#itu-theme .watch-name{font-size:13px;font-weight:900;color:#fff;overflow-wrap:anywhere;line-height:1.3}
+#itu-theme .profile-name-link{display:inline-block;color:inherit;text-decoration:none}
+#itu-theme .profile-name-link:hover{filter:brightness(1.35)}
+
+#itu-theme .member-counter{background:#111;border:1px solid #777;border-radius:11px;padding:17px 12px;margin:12px 0;text-align:center;transition:all .25s}
+#itu-theme .member-heading{font-size:10px;font-weight:bold;letter-spacing:4px;color:#aaa;margin-bottom:9px}
+#itu-theme .member-number{font-size:38px;font-weight:900;line-height:1.15;color:#fff;text-shadow:0 0 12px #fff}
+#itu-theme .member-caption{font-size:10px;letter-spacing:3px;color:#aaa;margin-top:7px}
+#itu-theme .member-status{font-size:10px;color:#888;margin-top:9px}
+#itu-theme .member-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#888;margin-right:5px}
+
+#itu-theme .new-members-box{background:#111;border:1px solid #777;border-radius:11px;padding:13px;margin:12px 0 15px;transition:all .25s}
+#itu-theme .new-members-heading{text-align:center;font-size:12px;font-weight:900;letter-spacing:3px;color:#fff;padding:3px 0 11px;margin-bottom:11px;border-bottom:1px solid #444}
+#itu-theme .new-member-card{display:flex;align-items:center;gap:11px;padding:9px;margin-bottom:8px;background:#191919;border:1px solid #444;border-radius:8px;transition:all .2s}
+#itu-theme .new-member-card:last-child{margin-bottom:0}
+#itu-theme .new-member-card:hover{transform:translateX(3px);border-color:#aaa;background:#222}
+#itu-theme .new-member-avatar{width:43px;height:43px;min-width:43px;border-radius:8px;background:#292929;border:1px solid #666;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:900;color:#fff}
+#itu-theme .new-member-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+#itu-theme .new-member-info{min-width:0;flex:1}
+#itu-theme .new-member-name{font-size:12px;font-weight:900;color:#fff;overflow-wrap:anywhere}
+#itu-theme .new-member-date{font-size:9px;color:#999;margin-top:3px;letter-spacing:1px}
+#itu-theme .new-member-rank{font-size:9px;color:#c9a64b;letter-spacing:1px;white-space:nowrap}
+#itu-theme .new-members-status{text-align:center;font-size:10px;color:#999;padding:10px 3px 3px}
+#itu-theme .new-members-status:empty{display:none}
+#itu-theme button{font-family:Arial,sans-serif}
+</style>
+
+<div id="itu-theme" data-color="off" data-palette="-1" style="position:relative;background:#050505;color:#fff;padding:15px;border:1px solid #888;border-radius:14px;font-family:Arial,sans-serif;">
+
+<!-- COLOR BUTTON -->
+<button id="preview-color-button" onclick="
+var b=document.getElementById('itu-theme');
+var palettes=[
+{name:'COTTON CANDY',bg:'linear-gradient(145deg,#24152f,#3b2044,#182b46)',panel:'linear-gradient(145deg,#352044,#263a5b)',accent:'#ffb6d9',accent2:'#a9d8ff',border:'#d99acb',glow:'#d98bc9'},
+{name:'OCEAN',bg:'linear-gradient(145deg,#061e2c,#073b4c,#102b45)',panel:'linear-gradient(145deg,#0b3e50,#12334d)',accent:'#75e6e0',accent2:'#9bc9ff',border:'#50b9c2',glow:'#39cbd0'},
+{name:'SUNSET',bg:'linear-gradient(145deg,#32152b,#54233b,#713c35)',panel:'linear-gradient(145deg,#57263e,#713d39)',accent:'#ffc08a',accent2:'#ff9fb1',border:'#e58b83',glow:'#ff947d'},
+{name:'LAVENDER',bg:'linear-gradient(145deg,#211b3d,#392650,#292447)',panel:'linear-gradient(145deg,#3c2b58,#29294d)',accent:'#d6b7ff',accent2:'#a9b8ff',border:'#a88bd8',glow:'#b69aff'},
+{name:'CHERRY',bg:'linear-gradient(145deg,#2b101b,#501b2c,#301526)',panel:'linear-gradient(145deg,#4a1b2b,#321727)',accent:'#ff9eb5',accent2:'#ffd0dc',border:'#d96b89',glow:'#ff7199'},
+{name:'MINT',bg:'linear-gradient(145deg,#102a27,#17443b,#1e3540)',panel:'linear-gradient(145deg,#17443b,#1c3540)',accent:'#9df0c5',accent2:'#a8e8e8',border:'#65c6a2',glow:'#65d8b0'}
+];
+var next=(Number(b.getAttribute('data-palette'))+1)%palettes.length;
+b.setAttribute('data-palette',next);
+var p=palettes[next];
+b.style.background=p.bg;
+b.style.borderColor=p.border;
+b.style.boxShadow='0 0 22px '+p.glow+',0 0 35px '+p.accent2;
+b.querySelectorAll('.hawk-profile,.watch-profile,.member-counter,.new-members-box').forEach(function(e){e.style.background=p.panel;e.style.borderColor=p.border});
+b.querySelectorAll('.new-member-card').forEach(function(e){e.style.background=p.bg;e.style.borderColor=p.border});
+b.querySelectorAll('.hawk-avatar-wrap,.watch-avatar-wrap').forEach(function(e){e.style.background='linear-gradient(135deg,'+p.accent+','+p.accent2+')';e.style.setProperty('--avatar-glow',p.glow);e.style.boxShadow='0 0 15px '+p.glow});
+b.querySelectorAll('[data-color-text]').forEach(function(e){e.style.color=p.accent});
+b.querySelectorAll('[data-color-shadow]').forEach(function(e){e.style.textShadow='0 0 12px '+p.glow});
+b.querySelectorAll('.member-number').forEach(function(e){e.style.color=p.accent2;e.style.textShadow='0 0 12px '+p.glow+',0 0 20px '+p.accent});
+b.querySelectorAll('.member-dot').forEach(function(e){e.style.background=p.accent;e.style.boxShadow='0 0 8px '+p.glow});
+b.querySelectorAll('[data-hover-button]').forEach(function(e){e.style.setProperty('--hover-glow',p.glow);e.style.setProperty('--hover-border',p.accent)});
+var button=document.getElementById('preview-color-button');
+button.innerText='✦ '+p.name+' • NEXT COLOR';
+button.style.background=p.panel;
+button.style.color=p.accent;
+button.style.borderColor=p.border;
+"
+style="display:block;width:100%;background:#111;color:#fff;border:1px solid #fff;border-radius:9px;padding:12px;margin-bottom:10px;font-weight:bold;letter-spacing:2px;">
+✦ CHANGE COLORS
+</button>
+
+<!-- COOKIE RAIN -->
+<button data-hover-button onclick="
+var box=document.getElementById('itu-theme');
+var treats=['🍪','🥛','😋'];
+for(var i=0;i<32;i++){
+(function(){
+var f=document.createElement('span');
+f.className='itu-cat-rain';
+f.textContent=treats[Math.floor(Math.random()*treats.length)];
+f.style.left=Math.random()*92+'%';
+f.style.fontSize=(18+Math.random()*20)+'px';
+f.style.animationDuration=(2.5+Math.random()*2.5)+'s';
+f.style.animationDelay=Math.random()*1.8+'s';
+box.appendChild(f);
+setTimeout(function(){f.remove()},7500);
+})();
+}"
+style="display:block;width:100%;background:#171717;color:#fff;border:1px solid #888;border-radius:9px;padding:11px;margin-bottom:14px;font-size:20px;">
+🍪
+</button>
+
+<!-- HEADER -->
+<div style="text-align:center;padding:23px 8px;background:linear-gradient(135deg,#111,#222,#080808);border:1px solid #777;border-radius:11px;margin-bottom:14px;">
+<div data-color-text="#ffb6d9" data-color-shadow="0 0 12px #d98bc9" style="font-size:28px;font-weight:900;letter-spacing:4px;color:#fff;">PREVIEW</div>
+</div>
+
+<!-- OWNER -->
+<div class="hawk-profile">
+<div class="hawk-owner-label" data-color-text="#ffb6d9">✦ OWNER ✦</div>
+<div class="hawk-avatar-wrap">
+<div class="hawk-avatar-inner">
+<span id="hawk-avatar-fallback">H</span>
+<img id="hawk-live-avatar" alt="Owner profile picture">
+</div>
+</div>
+<a class="profile-name-link" href="https://www.chess.com/member/i-am-hawk" target="_blank">
+<div class="hawk-name" data-color-text="#ffb6d9" data-color-shadow="0 0 12px #d98bc9">@I-Am-Hawk</div>
+</a>
+</div>
+
+<!-- WATCHANDLEARN101 -->
+<div class="watch-profile">
+<div class="watch-avatar-wrap">
+<div class="watch-avatar-inner">
+<span id="watch-avatar-fallback">W</span>
+<img id="watch-live-avatar" alt="WatchandLearn101 profile picture">
+</div>
+</div>
+<div class="watch-info">
+<a class="profile-name-link" href="https://www.chess.com/member/watchandlearn101" target="_blank">
+<div class="watch-name" data-color-text="#ffb6d9">@WatchandLearn101</div>
+</a>
+</div>
+</div>
+
+<!-- LOWKBADMOVE -->
+<div class="watch-profile">
+<div class="watch-avatar-wrap">
+<div class="watch-avatar-inner">
+<span id="lowk-avatar-fallback">L</span>
+<img id="lowk-live-avatar" alt="LowkBadMove profile picture">
+</div>
+</div>
+<div class="watch-info">
+<a class="profile-name-link" href="https://www.chess.com/member/lowkbadmove" target="_blank">
+<div class="watch-name" data-color-text="#ffb6d9">@LowkBadMove</div>
+</a>
+</div>
+</div>
+
+<!-- MEMBER COUNTER -->
+<div class="member-counter">
+<div class="member-heading" data-color-text="#ffb6d9">✦ MEMBERS ✦</div>
+<div class="member-number" id="itu-member-count">...</div>
+<div class="member-caption" data-color-text="#a9d8ff">MEMBERS AND COUNTING</div>
+<div class="member-status">
+<span class="member-dot" id="itu-member-dot"></span>
+<span id="itu-member-status">Connecting to Chess.com...</span>
+</div>
+</div>
+
+<!-- NEWEST MEMBERS -->
+<div class="new-members-box">
+<div class="new-members-heading" data-color-text="#ffb6d9">✦ NEWEST MEMBERS ✦</div>
+<div id="itu-new-members">
+<div class="new-members-status">Loading newest members...</div>
+</div>
+<div class="new-members-status" id="itu-new-members-status">Connecting to Chess.com...</div>
+</div>
+
+<!-- FOOTER -->
+<div data-color-text="#ffb6d9" style="text-align:center;padding:10px;color:#ccc;font-size:13px;font-style:italic;">
+&ldquo;Meow Meeeeow&rdquo; &nbsp;- once said by a hungry cat
+</div>
+
+<div style="height:1px;background:#777;margin:6px 0 12px;"></div>
+
+<div style="text-align:center;color:#aaa;font-size:9px;letter-spacing:4px;">
+C H E S S &bull; E S T . 2 0 2 6
+</div>
+
+<!-- COPY PREVIEW -->
+<button data-hover-button onclick="
+var temp=document.createElement('textarea');
+temp.value='preview';
+temp.style.position='fixed';
+temp.style.left='-9999px';
+document.body.appendChild(temp);
+temp.select();
+try{this.innerText=document.execCommand('copy')?'✓ COPIED!':'COPY FAILED'}
+catch(e){this.innerText='COPY FAILED'}
+document.body.removeChild(temp);
+"
+style="display:block;width:100%;background:#181818;color:#fff;border:1px solid #888;border-radius:9px;padding:13px;margin-top:14px;font-weight:bold;letter-spacing:2px;">
+COPY PREVIEW
+</button>
+
+<script>
+(function(){
+
+/* COOKIE CURSOR */
+var cursor=document.createElement('span');
+cursor.id='itu-cookie-cursor';
+cursor.textContent='🍪';
+document.body.appendChild(cursor);
+
+var theme=document.getElementById('itu-theme');
+
+document.addEventListener('mousemove',function(e){
+if(theme&&theme.contains(e.target)){
+cursor.style.display='block';
+cursor.style.left=e.clientX+'px';
+cursor.style.top=e.clientY+'px';
+}else{cursor.style.display='none'}
+});
+
+/* SWISH TRAIL */
+var last=0;
+document.addEventListener('mousemove',function(e){
+if(!theme||!theme.contains(e.target))return;
+var now=Date.now();
+if(now-last<28)return;
+last=now;
+var s=document.createElement('span');
+s.className='swish-trail';
+s.style.left=(e.clientX-8)+'px';
+s.style.top=(e.clientY+5)+'px';
+document.body.appendChild(s);
+setTimeout(function(){s.remove()},700);
+});
+
+/* LOAD PROFILE PICTURES */
+function loadAvatar(username,imageId,fallbackId,letter){
+var avatar=document.getElementById(imageId);
+var fallback=document.getElementById(fallbackId);
+fetch('https://api.chess.com/pub/player/'+username)
+.then(function(r){if(!r.ok)throw Error();return r.json()})
+.then(function(profile){
+if(profile.avatar){
+avatar.onload=function(){avatar.style.display='block';fallback.style.display='none'};
+avatar.onerror=function(){avatar.style.display='none';fallback.style.display='block'};
+avatar.src=profile.avatar;
+}
+})
+.catch(function(){fallback.textContent=letter});
+}
+
+loadAvatar('i-am-hawk','hawk-live-avatar','hawk-avatar-fallback','H');
+loadAvatar('watchandlearn101','watch-live-avatar','watch-avatar-fallback','W');
+loadAvatar('lowkbadmove','lowk-live-avatar','lowk-avatar-fallback','L');
+
+/* MEMBER COUNT */
+function loadMemberCount(){
+var count=document.getElementById('itu-member-count');
+var status=document.getElementById('itu-member-status');
+var dot=document.getElementById('itu-member-dot');
+
+fetch('https://api.chess.com/pub/club/i-tu')
+.then(function(r){if(!r.ok)throw Error();return r.json()})
+.then(function(club){
+if(typeof club.members_count==='number'){
+count.textContent=club.members_count.toLocaleString();
+status.textContent='Club count loaded';
+dot.style.background='#35d66f';
+dot.style.boxShadow='0 0 8px #35d66f';
+}else{throw Error()}
+})
+.catch(function(){
+count.textContent='--';
+status.textContent='Member count unavailable';
+dot.style.background='#ff5555';
+});
+}
+
+/* TIME AGO */
+function timeAgo(timestamp){
+var seconds=Math.max(0,Math.floor(Date.now()/1000-timestamp));
+if(seconds<60)return 'JUST NOW';
+var minutes=Math.floor(seconds/60);
+if(minutes<60)return minutes+' MINUTE'+(minutes===1?'':'S')+' AGO';
+var hours=Math.floor(minutes/60);
+if(hours<24)return hours+' HOUR'+(hours===1?'':'S')+' AGO';
+var days=Math.floor(hours/24);
+if(days<7)return days+' DAY'+(days===1?'':'S')+' AGO';
+var weeks=Math.floor(days/7);
+if(days<30)return weeks+' WEEK'+(weeks===1?'':'S')+' AGO';
+var months=Math.floor(days/30);
+if(days<365)return months+' MONTH'+(months===1?'':'S')+' AGO';
+var years=Math.floor(days/365);
+return years+' YEAR'+(years===1?'':'S')+' AGO';
+}
+
+/* NEWEST MEMBERS */
+function loadNewestMembers(){
+var container=document.getElementById('itu-new-members');
+var status=document.getElementById('itu-new-members-status');
+
+fetch('https://api.chess.com/pub/club/i-tu/members')
+.then(function(r){if(!r.ok)throw Error();return r.json()})
+.then(function(data){
+var members=[];
+['weekly','monthly','all_time'].forEach(function(group){
+if(Array.isArray(data[group])){
+data[group].forEach(function(member){
+if(member.username&&typeof member.joined==='number')members.push(member);
+});
+}
+});
+
+members.sort(function(a,b){return b.joined-a.joined});
+
+var seen={};
+members=members.filter(function(member){
+var key=member.username.toLowerCase();
+if(seen[key])return false;
+seen[key]=true;
+return true;
+});
+
+var newest=members.slice(0,3);
+container.innerHTML='';
+
+if(!newest.length){
+container.innerHTML='<div class="new-members-status">No member data available.</div>';
+status.textContent='';
+return;
+}
+
+newest.forEach(function(member,index){
+var card=document.createElement('div');
+card.className='new-member-card';
+
+var avatarBox=document.createElement('div');
+avatarBox.className='new-member-avatar';
+avatarBox.textContent=member.username.charAt(0).toUpperCase();
+
+var info=document.createElement('div');
+info.className='new-member-info';
+
+var link=document.createElement('a');
+link.href='https://www.chess.com/member/'+encodeURIComponent(member.username);
+link.target='_blank';
+link.rel='noopener noreferrer';
+link.className='profile-name-link';
+
+var name=document.createElement('div');
+name.className='new-member-name';
+name.textContent='@'+member.username;
+link.appendChild(name);
+
+var date=document.createElement('div');
+date.className='new-member-date';
+date.textContent='JOINED '+timeAgo(member.joined);
+
+info.appendChild(link);
+info.appendChild(date);
+
+var rank=document.createElement('div');
+rank.className='new-member-rank';
+rank.textContent='#'+(index+1);
+
+card.appendChild(avatarBox);
+card.appendChild(info);
+card.appendChild(rank);
+container.appendChild(card);
+
+fetch('https://api.chess.com/pub/player/'+encodeURIComponent(member.username))
+.then(function(r){if(!r.ok)throw Error();return r.json()})
+.then(function(profile){
+if(profile.avatar){
+var img=document.createElement('img');
+img.alt=member.username;
+img.src=profile.avatar;
+img.onerror=function(){avatarBox.textContent=member.username.charAt(0).toUpperCase()};
+avatarBox.textContent='';
+avatarBox.appendChild(img);
+}
+}).catch(function(){});
+});
+
+status.textContent='THE 3 MOST RECENTLY JOINED MEMBERS';
+})
+.catch(function(){
+container.innerHTML='<div class="new-members-status">Could not load members right now.</div>';
+status.textContent='Chess.com API unavailable';
+});
+}
+
+loadMemberCount();
+loadNewestMembers();
+setInterval(loadMemberCount,300000);
+setInterval(loadNewestMembers,300000);
+
+})();
+</script>
+
+</div>
