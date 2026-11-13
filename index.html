@@ -1,9 +1,8 @@
 
-
 <style>
 html,body{margin:0!important;padding:0!important;background:#050505!important;overflow-x:hidden}
 #itu-theme,#itu-theme *{box-sizing:border-box;cursor:none!important}
-#itu-theme{width:100%;min-height:100vh;line-height:1.4;--theme-bg:#050505;--theme-panel:#111;--theme-accent:#fff;--theme-accent2:#ccc;--theme-border:#888;--theme-glow:#fff;--theme-soft:#222}
+#itu-theme{width:100%;min-height:100vh;line-height:1.4;--theme-bg:linear-gradient(145deg,#281323,#55213c,#783c38);--theme-panel:linear-gradient(135deg,#55253e,#713d39,#3d2444);--theme-accent:#ffc28c;--theme-accent2:#ff9eae;--theme-border:#d77d7d;--theme-glow:#ff8a78;--theme-soft:#713b48}
 #itu-cookie-cursor{position:fixed;z-index:2147483647;pointer-events:none;display:none;font-size:25px;transform:translate(3px,3px);filter:drop-shadow(0 0 6px var(--cursor-glow,#d7a56b))}
 
 .cookie-crumb{position:fixed;z-index:2147483646;pointer-events:none;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffe4a8 0 15%,#d99a50 38%,#a96832 75%);box-shadow:0 0 5px rgba(221,166,94,.5);animation:crumbFade .7s ease-out forwards}
@@ -15,19 +14,8 @@ html,body{margin:0!important;padding:0!important;background:#050505!important;ov
 #itu-theme .itu-cat-rain{position:absolute;top:-40px;z-index:9999;pointer-events:none;animation:cookieFall linear forwards}
 @keyframes cookieFall{0%{transform:translateY(-30px) rotate(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(750px) rotate(360deg);opacity:0}}
 
-/* BIG GLOWING TITLE */
 #itu-theme .preview-header{text-align:center;padding:32px 5px 27px;margin-bottom:12px;width:100%;overflow:hidden}
-#itu-theme .preview-title{
-display:block;width:100%;
-font-size:clamp(38px,9vw,55px);
-font-weight:1000;
-letter-spacing:9px;
-line-height:1.2;
-color:var(--theme-accent);
-text-align:center;
-text-shadow:0 0 5px var(--theme-accent),0 0 12px var(--theme-glow),0 0 25px var(--theme-glow),0 0 45px var(--theme-glow);
-overflow-wrap:anywhere;
-}
+#itu-theme .preview-title{display:block;width:100%;font-size:clamp(38px,9vw,55px);font-weight:1000;letter-spacing:9px;line-height:1.2;color:var(--theme-accent);text-align:center;text-shadow:0 0 5px var(--theme-accent),0 0 12px var(--theme-glow),0 0 25px var(--theme-glow),0 0 45px var(--theme-glow);overflow-wrap:anywhere}
 #itu-theme .preview-underline{width:105px;height:3px;margin:17px auto 0;background:linear-gradient(90deg,transparent,var(--theme-accent),var(--theme-accent2),transparent);box-shadow:0 0 12px var(--theme-glow);border-radius:5px}
 
 #itu-theme .hawk-profile{text-align:center;padding:14px 8px;margin-bottom:12px;border:1px solid var(--theme-border);border-radius:11px;background:var(--theme-panel);overflow:hidden}
@@ -64,7 +52,7 @@ overflow-wrap:anywhere;
 #itu-theme .new-member-rank{font-size:9px;color:var(--theme-accent);letter-spacing:1px;white-space:nowrap}
 </style>
 
-<div id="itu-theme" data-palette="-1" style="position:relative;background:#050505;color:#fff;padding:15px;border:1px solid #888;border-radius:14px;font-family:Arial,sans-serif;">
+<div id="itu-theme" data-palette="2" style="position:relative;background:linear-gradient(145deg,#281323,#55213c,#783c38);color:#fff;padding:15px;border:1px solid #d77d7d;border-radius:14px;font-family:Arial,sans-serif;box-shadow:0 0 18px #ff8a78;">
 
 <button id="preview-color-button" class="theme-button" onclick="
 var b=document.getElementById('itu-theme');
@@ -88,7 +76,7 @@ b.querySelectorAll('.hawk-profile,.watch-profile,.member-counter,.new-members-bo
 b.querySelectorAll('.new-member-card').forEach(function(e){e.style.background=p.bg;e.style.borderColor=p.border});
 b.querySelectorAll('.hawk-avatar-wrap,.watch-avatar-wrap').forEach(function(e){e.style.background='linear-gradient(135deg,'+p.accent+','+p.accent2+')';e.style.boxShadow='0 0 13px '+p.glow});
 this.innerText='✦ '+p.name+' • NEXT COLOR';
-">✦ CHANGE COLORS</button>
+">✦ SUNSET MODE</button>
 
 <button class="theme-button" data-hover-button onclick="
 var box=document.getElementById('itu-theme');
@@ -274,4 +262,3 @@ loadPreviewAvatar('xx_vanilla_xx','preview-avatar-vanilla','X');
 })();
 </script>
 </div>
-
