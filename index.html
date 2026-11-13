@@ -1,22 +1,26 @@
 
 <style>
 html,body{margin:0!important;padding:0!important;background:#050505!important;overflow-x:hidden}
-
 #itu-theme,#itu-theme *{cursor:none!important}
-#itu-cookie-cursor{position:fixed;z-index:2147483647;pointer-events:none;display:none;font-size:25px;transform:translate(3px,3px);filter:drop-shadow(0 0 5px #d7a56b)}
-
+#itu-cookie-cursor{position:fixed;z-index:2147483647;pointer-events:none;display:none;font-size:25px;transform:translate(3px,3px);filter:drop-shadow(0 0 6px var(--cursor-glow,#d7a56b))}
 #itu-theme{box-sizing:border-box;width:100%;min-height:100vh;line-height:1.4;--theme-bg:#050505;--theme-panel:#111;--theme-accent:#fff;--theme-accent2:#ccc;--theme-border:#888;--theme-glow:#fff}
 
-.swish-trail{position:fixed;z-index:2147483647;pointer-events:none;width:24px;height:9px;border:2px solid rgba(255,255,255,.8);border-color:rgba(255,255,255,.8) transparent transparent;border-radius:50%;transform:rotate(-25deg);animation:swishFade .65s ease-out forwards}
-@keyframes swishFade{to{opacity:0;transform:translate(15px,10px) rotate(15deg) scale(.25)}}
+.swish-trail{position:fixed;z-index:2147483646;pointer-events:none;height:13px;border-top:3px solid;border-radius:50%;transform-origin:left center;animation:swishFade .55s ease-out forwards;filter:drop-shadow(0 0 4px currentColor)}
+.swish-trail:after{content:"";position:absolute;right:0;top:-4px;width:5px;height:5px;border-radius:50%;background:currentColor;box-shadow:0 0 7px currentColor}
+@keyframes swishFade{0%{opacity:.95}100%{opacity:0;transform:translate(18px,8px) rotate(12deg) scaleX(.25)}}
 
-#itu-theme button,#itu-theme a[data-hover-button]{transition:all .22s ease}
-#itu-theme button[data-hover-button]:hover,#itu-theme a[data-hover-button]:hover{transform:translateY(-2px) scale(1.02);filter:brightness(1.2);box-shadow:0 0 16px var(--hover-glow,#fff),0 0 28px var(--hover-glow,#fff);border-color:var(--hover-border,#fff)!important}
+#itu-theme button{font-family:Arial,sans-serif;transition:all .22s ease}
+#itu-theme button[data-hover-button]:hover{transform:translateY(-2px) scale(1.02);filter:brightness(1.2);box-shadow:0 0 16px var(--hover-glow,#fff),0 0 28px var(--hover-glow,#fff);border-color:var(--hover-border,#fff)!important}
 #itu-theme .theme-button{background:linear-gradient(135deg,var(--theme-panel),var(--theme-bg))!important;color:var(--theme-accent)!important;border:1px solid var(--theme-border)!important;box-shadow:0 0 12px var(--theme-glow)!important}
 #itu-theme .theme-button:hover{filter:brightness(1.3)!important;box-shadow:0 0 18px var(--theme-glow),0 0 30px var(--theme-glow)!important}
 
 #itu-theme .itu-cat-rain{position:absolute;top:-40px;z-index:9999;pointer-events:none;animation:cookieFall linear forwards}
 @keyframes cookieFall{0%{transform:translateY(-30px) rotate(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(750px) rotate(360deg);opacity:0}}
+
+#itu-theme .preview-header{text-align:center;padding:25px 5px 22px;margin-bottom:14px;background:transparent;border:0;position:relative}
+#itu-theme .preview-title{font-size:clamp(30px,7vw,43px);font-weight:1000;letter-spacing:7px;line-height:1.15;color:var(--theme-accent);text-shadow:0 0 8px var(--theme-glow),0 0 22px var(--theme-glow);transition:all .3s ease}
+#itu-theme .preview-subtitle{font-size:9px;letter-spacing:6px;margin-top:10px;color:var(--theme-accent2);opacity:.85}
+#itu-theme .preview-line{width:75px;height:2px;margin:15px auto 0;background:var(--theme-accent);box-shadow:0 0 10px var(--theme-glow);border-radius:10px;transition:all .3s ease}
 
 #itu-theme .hawk-profile{text-align:center;padding:14px 8px;margin-bottom:12px;border:1px solid var(--theme-border);border-radius:11px;background:var(--theme-panel);overflow:hidden;transition:all .25s}
 #itu-theme .hawk-avatar-wrap{width:78px;height:78px;margin:10px auto;border-radius:50%;padding:3px;background:var(--theme-border);box-shadow:0 0 9px var(--theme-glow);transition:all .25s}
@@ -55,13 +59,11 @@ html,body{margin:0!important;padding:0!important;background:#050505!important;ov
 #itu-theme .new-member-rank{font-size:9px;color:var(--theme-accent);letter-spacing:1px;white-space:nowrap}
 #itu-theme .new-members-status{text-align:center;font-size:10px;color:#999;padding:10px 3px 3px}
 #itu-theme .new-members-status:empty{display:none}
-#itu-theme button{font-family:Arial,sans-serif}
 </style>
 
-<div id="itu-theme" data-color="off" data-palette="-1" style="position:relative;background:#050505;color:#fff;padding:15px;border:1px solid #888;border-radius:14px;font-family:Arial,sans-serif;">
+<div id="itu-theme" data-palette="-1" style="position:relative;background:#050505;color:#fff;padding:15px;border:1px solid #888;border-radius:14px;font-family:Arial,sans-serif;">
 
-<!-- COLOR BUTTON -->
-<button id="preview-color-button" onclick="
+<button id="preview-color-button" class="theme-button" onclick="
 var b=document.getElementById('itu-theme');
 var palettes=[
 {name:'MIDNIGHT',bg:'linear-gradient(145deg,#100d24,#21163d,#111b35)',panel:'linear-gradient(145deg,#21183b,#172642)',accent:'#c8a8ff',accent2:'#9bd2ff',border:'#8065b5',glow:'#9873e8'},
@@ -76,17 +78,16 @@ var palettes=[
 var next=(Number(b.getAttribute('data-palette'))+1)%palettes.length;
 b.setAttribute('data-palette',next);
 var p=palettes[next];
-
 b.style.setProperty('--theme-bg',p.bg);
 b.style.setProperty('--theme-panel',p.panel);
 b.style.setProperty('--theme-accent',p.accent);
 b.style.setProperty('--theme-accent2',p.accent2);
 b.style.setProperty('--theme-border',p.border);
 b.style.setProperty('--theme-glow',p.glow);
+b.style.setProperty('--cursor-glow',p.glow);
 b.style.background=p.bg;
 b.style.borderColor=p.border;
 b.style.boxShadow='0 0 22px '+p.glow+',0 0 35px '+p.accent2;
-
 b.querySelectorAll('.hawk-profile,.watch-profile,.member-counter,.new-members-box').forEach(function(e){e.style.background=p.panel;e.style.borderColor=p.border});
 b.querySelectorAll('.new-member-card').forEach(function(e){e.style.background=p.bg;e.style.borderColor=p.border});
 b.querySelectorAll('.hawk-avatar-wrap,.watch-avatar-wrap').forEach(function(e){e.style.background='linear-gradient(135deg,'+p.accent+','+p.accent2+')';e.style.setProperty('--avatar-glow',p.glow);e.style.boxShadow='0 0 15px '+p.glow});
@@ -96,14 +97,12 @@ b.querySelectorAll('.member-dot').forEach(function(e){e.style.background=p.accen
 b.querySelectorAll('.new-member-rank').forEach(function(e){e.style.color=p.accent});
 b.querySelectorAll('.theme-button').forEach(function(e){e.style.background='linear-gradient(135deg,'+p.panel+','+p.bg+')';e.style.color=p.accent;e.style.borderColor=p.border;e.style.boxShadow='0 0 12px '+p.glow});
 b.querySelectorAll('[data-hover-button]').forEach(function(e){e.style.setProperty('--hover-glow',p.glow);e.style.setProperty('--hover-border',p.accent)});
-var button=document.getElementById('preview-color-button');
-button.innerText='✦ '+p.name+' • NEXT COLOR';
-"
-class="theme-button" style="display:block;width:100%;border-radius:9px;padding:12px;margin-bottom:10px;font-weight:bold;letter-spacing:2px;">
+document.querySelectorAll('.swish-trail').forEach(function(e){e.style.color=p.accent});
+this.innerText='✦ '+p.name+' • NEXT COLOR';
+" style="display:block;width:100%;border-radius:9px;padding:12px;margin-bottom:10px;font-weight:bold;letter-spacing:2px;">
 ✦ CHANGE COLORS
 </button>
 
-<!-- COOKIE RAIN -->
 <button id="preview-cookie-button" class="theme-button" data-hover-button onclick="
 var box=document.getElementById('itu-theme');
 var treats=['🍪','🥛','😋'];
@@ -119,92 +118,50 @@ f.style.animationDelay=Math.random()*1.8+'s';
 box.appendChild(f);
 setTimeout(function(){f.remove()},7500);
 })();
-}"
-style="display:block;width:100%;border-radius:9px;padding:11px;margin-bottom:14px;font-size:20px;">
+}" style="display:block;width:100%;border-radius:9px;padding:11px;margin-bottom:14px;font-size:20px;">
 🍪
 </button>
 
-<!-- HEADER -->
-<div style="text-align:center;padding:23px 8px;background:linear-gradient(135deg,#111,#222,#080808);border:1px solid #777;border-radius:11px;margin-bottom:14px;">
-<div data-color-text="#ffb6d9" style="font-size:28px;font-weight:900;letter-spacing:4px;color:#fff;">PREVIEW</div>
+<!-- BIG PREVIEW TITLE -->
+<div class="preview-header">
+<div class="preview-title">PREVIEW</div>
+<div class="preview-subtitle">YOUR CUSTOM SIDEBAR</div>
+<div class="preview-line"></div>
 </div>
 
-<!-- OWNER -->
 <div class="hawk-profile">
-<div class="hawk-owner-label" data-color-text="#ffb6d9">✦ OWNER ✦</div>
-<div class="hawk-avatar-wrap">
-<div class="hawk-avatar-inner">
-<span id="hawk-avatar-fallback">H</span>
-<img id="hawk-live-avatar" alt="Owner profile picture">
-</div>
-</div>
-<a class="profile-name-link" href="https://www.chess.com/member/i-am-hawk" target="_blank">
-<div class="hawk-name" data-color-text="#ffb6d9">@I-Am-Hawk</div>
-</a>
+<div class="hawk-owner-label" data-color-text>✦ OWNER ✦</div>
+<div class="hawk-avatar-wrap"><div class="hawk-avatar-inner"><span id="hawk-avatar-fallback">H</span><img id="hawk-live-avatar" alt="Owner profile picture"></div></div>
+<a class="profile-name-link" href="https://www.chess.com/member/i-am-hawk" target="_blank"><div class="hawk-name" data-color-text>@I-Am-Hawk</div></a>
 </div>
 
-<!-- WATCHANDLEARN101 -->
 <div class="watch-profile">
-<div class="watch-avatar-wrap">
-<div class="watch-avatar-inner">
-<span id="watch-avatar-fallback">W</span>
-<img id="watch-live-avatar" alt="WatchandLearn101 profile picture">
-</div>
-</div>
-<div class="watch-info">
-<a class="profile-name-link" href="https://www.chess.com/member/watchandlearn101" target="_blank">
-<div class="watch-name" data-color-text="#ffb6d9">@WatchandLearn101</div>
-</a>
-</div>
+<div class="watch-avatar-wrap"><div class="watch-avatar-inner"><span id="watch-avatar-fallback">W</span><img id="watch-live-avatar" alt="WatchandLearn101 profile picture"></div></div>
+<div class="watch-info"><a class="profile-name-link" href="https://www.chess.com/member/watchandlearn101" target="_blank"><div class="watch-name" data-color-text>@WatchandLearn101</div></a></div>
 </div>
 
-<!-- LOWKBADMOVE -->
 <div class="watch-profile">
-<div class="watch-avatar-wrap">
-<div class="watch-avatar-inner">
-<span id="lowk-avatar-fallback">L</span>
-<img id="lowk-live-avatar" alt="LowkBadMove profile picture">
-</div>
-</div>
-<div class="watch-info">
-<a class="profile-name-link" href="https://www.chess.com/member/lowkbadmove" target="_blank">
-<div class="watch-name" data-color-text="#ffb6d9">@LowkBadMove</div>
-</a>
-</div>
+<div class="watch-avatar-wrap"><div class="watch-avatar-inner"><span id="lowk-avatar-fallback">L</span><img id="lowk-live-avatar" alt="LowkBadMove profile picture"></div></div>
+<div class="watch-info"><a class="profile-name-link" href="https://www.chess.com/member/lowkbadmove" target="_blank"><div class="watch-name" data-color-text>@LowkBadMove</div></a></div>
 </div>
 
-<!-- MEMBER COUNTER -->
 <div class="member-counter">
-<div class="member-heading" data-color-text="#ffb6d9">✦ MEMBERS ✦</div>
+<div class="member-heading" data-color-text>✦ MEMBERS ✦</div>
 <div class="member-number" id="itu-member-count">...</div>
-<div class="member-caption" data-color-text="#a9d8ff">MEMBERS AND COUNTING</div>
-<div class="member-status">
-<span class="member-dot" id="itu-member-dot"></span>
-<span id="itu-member-status">Connecting to Chess.com...</span>
-</div>
+<div class="member-caption" data-color-text>MEMBERS AND COUNTING</div>
+<div class="member-status"><span class="member-dot" id="itu-member-dot"></span><span id="itu-member-status">Connecting to Chess.com...</span></div>
 </div>
 
-<!-- NEWEST MEMBERS -->
 <div class="new-members-box">
-<div class="new-members-heading" data-color-text="#ffb6d9">✦ NEWEST MEMBERS ✦</div>
-<div id="itu-new-members">
-<div class="new-members-status">Loading newest members...</div>
-</div>
+<div class="new-members-heading" data-color-text>✦ NEWEST MEMBERS ✦</div>
+<div id="itu-new-members"><div class="new-members-status">Loading newest members...</div></div>
 <div class="new-members-status" id="itu-new-members-status">Connecting to Chess.com...</div>
 </div>
 
-<!-- FOOTER -->
-<div data-color-text="#ffb6d9" style="text-align:center;padding:10px;color:#ccc;font-size:13px;font-style:italic;">
-&ldquo;Meow Meeeeow&rdquo; &nbsp;- once said by a hungry cat
-</div>
-
+<div data-color-text style="text-align:center;padding:10px;color:#ccc;font-size:13px;font-style:italic;">&ldquo;Meow Meeeeow&rdquo; &nbsp;- once said by a hungry cat</div>
 <div style="height:1px;background:#777;margin:6px 0 12px;"></div>
+<div style="text-align:center;color:#aaa;font-size:9px;letter-spacing:4px;">C H E S S &bull; E S T . 2 0 2 6</div>
 
-<div style="text-align:center;color:#aaa;font-size:9px;letter-spacing:4px;">
-C H E S S &bull; E S T . 2 0 2 6
-</div>
-
-<!-- COPY PREVIEW -->
 <button id="preview-copy-button" class="theme-button" data-hover-button onclick="
 var temp=document.createElement('textarea');
 temp.value='preview';
@@ -215,20 +172,16 @@ temp.select();
 try{this.innerText=document.execCommand('copy')?'✓ COPIED!':'COPY FAILED'}
 catch(e){this.innerText='COPY FAILED'}
 document.body.removeChild(temp);
-"
-style="display:block;width:100%;border-radius:9px;padding:13px;margin-top:14px;font-weight:bold;letter-spacing:2px;">
+" style="display:block;width:100%;border-radius:9px;padding:13px;margin-top:14px;font-weight:bold;letter-spacing:2px;">
 COPY PREVIEW
 </button>
 
 <script>
 (function(){
-
-/* COOKIE CURSOR */
 var cursor=document.createElement('span');
 cursor.id='itu-cookie-cursor';
 cursor.textContent='🍪';
 document.body.appendChild(cursor);
-
 var theme=document.getElementById('itu-theme');
 
 document.addEventListener('mousemove',function(e){
@@ -239,19 +192,27 @@ cursor.style.top=e.clientY+'px';
 }else{cursor.style.display='none'}
 });
 
-/* SWISH TRAIL */
-var last=0;
+/* SMOOTH DIRECTIONAL COOKIE SWOOSH */
+var lastX=null,lastY=null,lastTime=0;
 document.addEventListener('mousemove',function(e){
-if(!theme||!theme.contains(e.target))return;
+if(!theme||!theme.contains(e.target)){lastX=null;lastY=null;return}
 var now=Date.now();
-if(now-last<28)return;
-last=now;
+if(lastX===null){lastX=e.clientX;lastY=e.clientY;lastTime=now;return}
+var dx=e.clientX-lastX;
+var dy=e.clientY-lastY;
+var distance=Math.sqrt(dx*dx+dy*dy);
+if(distance<5||now-lastTime<18)return;
+var angle=Math.atan2(dy,dx)*180/Math.PI;
 var s=document.createElement('span');
 s.className='swish-trail';
-s.style.left=(e.clientX-8)+'px';
-s.style.top=(e.clientY+5)+'px';
+s.style.left=lastX+'px';
+s.style.top=lastY+'px';
+s.style.width=Math.min(55,Math.max(22,distance*1.5))+'px';
+s.style.transform='rotate('+angle+'deg)';
+s.style.color=getComputedStyle(theme).getPropertyValue('--theme-accent').trim()||'#fff';
 document.body.appendChild(s);
-setTimeout(function(){s.remove()},700);
+setTimeout(function(){s.remove()},600);
+lastX=e.clientX;lastY=e.clientY;lastTime=now;
 });
 
 /* LOAD PROFILE PICTURES */
@@ -266,10 +227,8 @@ avatar.onload=function(){avatar.style.display='block';fallback.style.display='no
 avatar.onerror=function(){avatar.style.display='none';fallback.style.display='block'};
 avatar.src=profile.avatar;
 }
-})
-.catch(function(){fallback.textContent=letter});
+}).catch(function(){fallback.textContent=letter});
 }
-
 loadAvatar('i-am-hawk','hawk-live-avatar','hawk-avatar-fallback','H');
 loadAvatar('watchandlearn101','watch-live-avatar','watch-avatar-fallback','W');
 loadAvatar('lowkbadmove','lowk-live-avatar','lowk-avatar-fallback','L');
@@ -279,7 +238,6 @@ function loadMemberCount(){
 var count=document.getElementById('itu-member-count');
 var status=document.getElementById('itu-member-status');
 var dot=document.getElementById('itu-member-dot');
-
 fetch('https://api.chess.com/pub/club/i-tu')
 .then(function(r){if(!r.ok)throw Error();return r.json()})
 .then(function(club){
@@ -290,11 +248,7 @@ dot.style.background='#35d66f';
 dot.style.boxShadow='0 0 8px #35d66f';
 }else{throw Error()}
 })
-.catch(function(){
-count.textContent='--';
-status.textContent='Member count unavailable';
-dot.style.background='#ff5555';
-});
+.catch(function(){count.textContent='--';status.textContent='Member count unavailable';dot.style.background='#ff5555'});
 }
 
 /* TIME AGO */
@@ -319,7 +273,6 @@ return years+' YEAR'+(years===1?'':'S')+' AGO';
 function loadNewestMembers(){
 var container=document.getElementById('itu-new-members');
 var status=document.getElementById('itu-new-members-status');
-
 fetch('https://api.chess.com/pub/club/i-tu/members')
 .then(function(r){if(!r.ok)throw Error();return r.json()})
 .then(function(data){
@@ -331,9 +284,7 @@ if(member.username&&typeof member.joined==='number')members.push(member);
 });
 }
 });
-
 members.sort(function(a,b){return b.joined-a.joined});
-
 var seen={};
 members=members.filter(function(member){
 var key=member.username.toLowerCase();
@@ -341,54 +292,42 @@ if(seen[key])return false;
 seen[key]=true;
 return true;
 });
-
 var newest=members.slice(0,3);
 container.innerHTML='';
-
 if(!newest.length){
 container.innerHTML='<div class="new-members-status">No member data available.</div>';
 status.textContent='';
 return;
 }
-
 newest.forEach(function(member,index){
 var card=document.createElement('div');
 card.className='new-member-card';
-
 var avatarBox=document.createElement('div');
 avatarBox.className='new-member-avatar';
 avatarBox.textContent=member.username.charAt(0).toUpperCase();
-
 var info=document.createElement('div');
 info.className='new-member-info';
-
 var link=document.createElement('a');
 link.href='https://www.chess.com/member/'+encodeURIComponent(member.username);
 link.target='_blank';
 link.rel='noopener noreferrer';
 link.className='profile-name-link';
-
 var name=document.createElement('div');
 name.className='new-member-name';
 name.textContent='@'+member.username;
 link.appendChild(name);
-
 var date=document.createElement('div');
 date.className='new-member-date';
 date.textContent='JOINED '+timeAgo(member.joined);
-
 info.appendChild(link);
 info.appendChild(date);
-
 var rank=document.createElement('div');
 rank.className='new-member-rank';
 rank.textContent='#'+(index+1);
-
 card.appendChild(avatarBox);
 card.appendChild(info);
 card.appendChild(rank);
 container.appendChild(card);
-
 fetch('https://api.chess.com/pub/player/'+encodeURIComponent(member.username))
 .then(function(r){if(!r.ok)throw Error();return r.json()})
 .then(function(profile){
@@ -402,7 +341,6 @@ avatarBox.appendChild(img);
 }
 }).catch(function(){});
 });
-
 status.textContent='THE 3 MOST RECENTLY JOINED MEMBERS';
 })
 .catch(function(){
@@ -410,15 +348,10 @@ container.innerHTML='<div class="new-members-status">Could not load members righ
 status.textContent='Chess.com API unavailable';
 });
 }
-
 loadMemberCount();
 loadNewestMembers();
 setInterval(loadMemberCount,300000);
 setInterval(loadNewestMembers,300000);
-
 })();
 </script>
-
-</div>
-
 </div>
