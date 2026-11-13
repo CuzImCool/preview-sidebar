@@ -171,8 +171,17 @@ box.appendChild(f);setTimeout(function(){f.remove()},7500);
 <div style="text-align:center;color:#aaa;font-size:9px;letter-spacing:4px;">C H E S S &bull; E S T . 2 0 2 6</div>
 
 <button class="theme-button" data-hover-button onclick="
-var temp=document.createElement('textarea');temp.value='preview';temp.style.position='fixed';temp.style.left='-9999px';document.body.appendChild(temp);temp.select();
-try{this.innerText=document.execCommand('copy')?'✓ COPIED!':'COPY FAILED'}catch(e){this.innerText='COPY FAILED'}
+var temp=document.createElement('textarea');
+temp.value='HAWK IS COOL⛄️';
+temp.style.position='fixed';
+temp.style.left='-9999px';
+document.body.appendChild(temp);
+temp.select();
+try{
+this.innerText=document.execCommand('copy')?'✓ COPIED!':'COPY FAILED';
+}catch(e){
+this.innerText='COPY FAILED';
+}
 document.body.removeChild(temp);
 " style="margin-top:14px;">COPY PREVIEW</button>
 
