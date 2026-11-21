@@ -1,3 +1,4 @@
+
 <style>
 html,body{margin:0!important;padding:0!important;background:#050505!important;overflow-x:hidden}
 #itu-theme,#itu-theme *{box-sizing:border-box;cursor:none!important}
@@ -49,44 +50,6 @@ html,body{margin:0!important;padding:0!important;background:#050505!important;ov
 #itu-theme .new-member-name{font-size:12px;font-weight:900;color:#fff;overflow-wrap:anywhere}
 #itu-theme .new-member-date{font-size:9px;color:#aaa;margin-top:3px;letter-spacing:1px}
 #itu-theme .new-member-rank{font-size:9px;color:var(--theme-accent);letter-spacing:1px;white-space:nowrap}
-
-/* SINGLE MOVING BORDER GLOW */
-@property --itu-border-angle {
-  syntax: "<angle>";
-  inherits: false;
-  initial-value: 0deg;
-}
-
-#itu-theme::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:14px;
-  padding:1.5px;
-  pointer-events:none;
-  z-index:50;
-  background:conic-gradient(
-    from var(--itu-border-angle),
-    transparent 0deg 315deg,
-    var(--theme-accent) 332deg,
-    var(--theme-glow) 342deg,
-    var(--theme-accent2) 350deg,
-    transparent 360deg
-  );
-  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor;
-  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
-  mask-composite:exclude;
-  animation:itu-border-travel 3.8s linear infinite;
-}
-
-@keyframes itu-border-travel{
-  to{--itu-border-angle:360deg}
-}
-
-@media (prefers-reduced-motion:reduce){
-  #itu-theme::after{animation:none!important}
-}
 </style>
 
 <div id="itu-theme" data-palette="2" style="position:relative;background:linear-gradient(145deg,#281323,#55213c,#783c38);color:#fff;padding:15px;border:1px solid #d77d7d;border-radius:14px;font-family:Arial,sans-serif;box-shadow:0 0 18px #ff8a78;">
@@ -203,7 +166,7 @@ box.appendChild(f);setTimeout(function(){f.remove()},7500);
 </div>
 </div>
 
-<div style="text-align:center;padding:10px;color:#ccc;font-size:13px;font-style:italic;"></div>
+<div style="text-align:center;padding:10px;color:#ccc;font-size:13px;font-style:italic;</div>
 <div style="height:1px;background:var(--theme-border);margin:6px 0 12px;"></div>
 <div style="text-align:center;color:#aaa;font-size:9px;letter-spacing:4px;">C H E S S &bull; E S T . 2 0 2 6</div>
 
@@ -258,7 +221,7 @@ crumb.style.height=size+'px';
 crumb.style.left=(e.clientX+(Math.random()*10-5))+'px';
 crumb.style.top=(e.clientY+(Math.random()*10-5))+'px';
 crumb.style.setProperty('--crumb-x',(Math.random()*24-12)+'px');
-crumb.style.setProperty('--crumb-y',(8+Math.random()*18)+'px';
+crumb.style.setProperty('--crumb-y',(8+Math.random()*18)+'px');
 document.body.appendChild(crumb);
 setTimeout(function(){crumb.remove()},750);
 
