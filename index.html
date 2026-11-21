@@ -1,4 +1,3 @@
-
 <style>
 html,body{margin:0!important;padding:0!important;background:#050505!important;overflow-x:hidden}
 #itu-theme,#itu-theme *{box-sizing:border-box;cursor:none!important}
@@ -51,48 +50,42 @@ html,body{margin:0!important;padding:0!important;background:#050505!important;ov
 #itu-theme .new-member-date{font-size:9px;color:#aaa;margin-top:3px;letter-spacing:1px}
 #itu-theme .new-member-rank{font-size:9px;color:var(--theme-accent);letter-spacing:1px;white-space:nowrap}
 
-/* LIVE BORDER EFFECT */
-#itu-theme{
-animation:itu-frame-breathe 4.5s ease-in-out infinite;
+/* SINGLE MOVING BORDER GLOW */
+@property --itu-border-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
 }
-#itu-theme::before{
-content:"";
-position:absolute;
-inset:-2px;
-border-radius:16px;
-padding:2px;
-pointer-events:none;
-z-index:20;
-background:conic-gradient(from 0deg,transparent 0deg 250deg,var(--theme-accent) 275deg,var(--theme-accent2) 292deg,transparent 315deg 360deg);
--webwebkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
--webkit-mask-composite:xor;
-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
-mask-composite:exclude;
-animation:itu-border-orbit 5.5s linear infinite;
+
+#itu-theme::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:14px;
+  padding:1.5px;
+  pointer-events:none;
+  z-index:50;
+  background:conic-gradient(
+    from var(--itu-border-angle),
+    transparent 0deg 315deg,
+    var(--theme-accent) 332deg,
+    var(--theme-glow) 342deg,
+    var(--theme-accent2) 350deg,
+    transparent 360deg
+  );
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  mask-composite:exclude;
+  animation:itu-border-travel 3.8s linear infinite;
 }
-@keyframes itu-border-orbit{
-to{transform:rotate(360deg)}
+
+@keyframes itu-border-travel{
+  to{--itu-border-angle:360deg}
 }
-@keyframes itu-frame-breathe{
-0%,100%{box-shadow:0 0 14px var(--theme-glow)}
-50%{box-shadow:0 0 23px var(--theme-glow),0 0 34px var(--theme-glow)}
-}
-#itu-theme .preview-title{
-animation:itu-title-glow 3.8s ease-in-out infinite;
-}
-@keyframes itu-title-glow{
-0%,100%{text-shadow:0 0 5px var(--theme-accent),0 0 12px var(--theme-glow),0 0 25px var(--theme-glow),0 0 45px var(--theme-glow)}
-50%{text-shadow:0 0 8px var(--theme-accent),0 0 18px var(--theme-glow),0 0 34px var(--theme-glow),0 0 55px var(--theme-glow)}
-}
-#itu-theme .preview-underline{
-animation:itu-underline-pulse 2.8s ease-in-out infinite;
-}
-@keyframes itu-underline-pulse{
-0%,100%{opacity:.75;filter:brightness(1)}
-50%{opacity:1;filter:brightness(1.6)}
-}
+
 @media (prefers-reduced-motion:reduce){
-#itu-theme,#itu-theme::before,#itu-theme .preview-title,#itu-theme .preview-underline{animation:none!important}
+  #itu-theme::after{animation:none!important}
 }
 </style>
 
@@ -264,7 +257,7 @@ crumb.style.width=size+'px';
 crumb.style.height=size+'px';
 crumb.style.left=(e.clientX+(Math.random()*10-5))+'px';
 crumb.style.top=(e.clientY+(Math.random()*10-5))+'px';
-crumb.style.setProperty('--crumb-x',(Math.random()*24-12)+'px';
+crumb.style.setProperty('--crumb-x',(Math.random()*24-12)+'px');
 crumb.style.setProperty('--crumb-y',(8+Math.random()*18)+'px';
 document.body.appendChild(crumb);
 setTimeout(function(){crumb.remove()},750);
